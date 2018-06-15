@@ -17,15 +17,9 @@
         tools:ignore="MissingConstraints">
 
         <ListView
+            android:id="@+id/lstConsulta"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prueba"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="246dp" />
 </android.support.constraint.ConstraintLayout>
