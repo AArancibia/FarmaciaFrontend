@@ -19,7 +19,13 @@
         <ListView
             android:id="@+id/lstConsulta"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="447dp" />
+
+        <Button
+            android:id="@+id/btnNuevo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuevo Producto" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

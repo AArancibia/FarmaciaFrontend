@@ -1,5 +1,6 @@
 package com.example.eti.farm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,6 +36,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        button = (Button) findViewById(R.id.btnNuevo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +65,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         Thread tr = new Thread() {
             @Override
@@ -89,8 +103,10 @@ public class MainActivity extends AppCompatActivity
             String texto = "";
             for (int i = 0; i < json.length(); i++) {
                 Log.d("json", String.valueOf(i));
-                //texto = json.getJSONArray("usuarios").getJSONObject(i).getString("_id").toString() +  " - " + json.getJSONArray("usuarios").getJSONObject(i).getString("email").toString() ;
-                texto = json.getString("usuarios");
+                texto = json.getJSONArray("productos").getJSONObject(i).getString("nombre") + " | " +
+                        json.getJSONArray("productos").getJSONObject(i).getString("precio");
+                //json.getJSONArray("productos").getJSONObject(i).getJSONObject("proveedor").getString("nombreEmpresa") +
+                //texto = json.getString("usuarios");
                 listado.add(texto);
             }
         } catch (Exception e) {
