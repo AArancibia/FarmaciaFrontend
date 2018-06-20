@@ -36,7 +36,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        button = (Button) findViewById(R.id.btnNuevo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,14 +62,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         Thread tr = new Thread() {
             @Override
@@ -118,7 +107,7 @@ public class MainActivity extends AppCompatActivity
     public String leer() {
         HttpClient httpClient = new DefaultHttpClient();
         HttpContext context = new BasicHttpContext();
-        HttpGet httpGet = new HttpGet("http://192.168.10.154:3000/usuarios");
+        HttpGet httpGet = new HttpGet("http://192.168.10.154:3000/productos");
         String resultado = null;
         try {
             HttpResponse response = httpClient.execute(httpGet, context);
@@ -175,7 +164,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent i = new Intent(getApplicationContext(), Crear.class);
+            startActivity(i);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
